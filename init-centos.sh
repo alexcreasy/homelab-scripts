@@ -10,8 +10,8 @@ nmcli con add type ethernet con-name lv426 ifname enp0s25
 
 
 # Test for network connectivity
-ping -c 1 8.8.8.8 || echo ""
-ping -c 1 test.lan || echo "hello"
+ping -c 5 8.8.8.8 || echo "Error: no network connection"
+ping -c 5 google.com || echo "Error: unable to resolve DNS"
 
 # Post install
 dnf -y update && dnf -y upgrade
