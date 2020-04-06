@@ -1,0 +1,44 @@
+# Instructions
+
+## Create network profile (In case of no network connection)
+
+Ref: https://www.tecmint.com/configure-network-connections-using-nmcli-tool-in-linux/
+
+First run:
+	$ nmcli con show
+
+Create a new profile noting the interface id from above 
+	$ nmcli con add type ethernet con-name [connection_name] ifname [interface_id]
+
+Start the interface:
+	$ nmcli con up [interface_id]
+
+Check the service has an ip address:
+	$ ip a
+
+
+## Disable lid switch
+
+Ref: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/desktop_migration_and_administration_guide/closing-lid
+
+Procedure 13.10. Configuring the lid switch
+
+Open the /etc/systemd/logind.conf file for editing.
+Find the HandleLidSwitch=suspend line in the file. If it is quoted out with the # character at the start, unquote it.
+If the line is not present in the file, add it.
+Replace the default suspend parameter with
+    lock for the screen to lock;
+    ignore for nothing to happen;
+    poweroff for the computer to switch off. 
+For example:
+
+	[Login]
+	HandleLidSwitch=lock
+
+Save your changes and close the editor.
+Run the following command so that your changes preserve the next restart of the system:
+
+	$ systemctl restart systemd-logind.service
+
+Warning
+Keep in mind that restarting the service forcibly interrupts any currently running GNOME session of any desktop user who is logged in. This can result in users losing unsaved data. 
