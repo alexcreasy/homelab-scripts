@@ -9,7 +9,7 @@ fi
 
 yum -y update && yum -y upgrade
 
-yum install git
+yum -y install git
 
 mkdir -p "$HOME/scm"
 
