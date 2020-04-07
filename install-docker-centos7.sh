@@ -1,6 +1,6 @@
  #!/usr/bin/env bash
 
-# Installs docker for Fedora 31 server
+# Installs docker for CentOS7
 
 if [[ $EUID -ne 0 ]]; then
     echo "You must be root to do this." 1>&2
