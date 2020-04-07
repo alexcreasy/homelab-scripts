@@ -34,5 +34,7 @@ systemctl enable docker
 
 usermod -aG docker homelab
 
+curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 echo "Done: remember to add your user to the docker group by running: sudo usermod -aG docker your-user"
