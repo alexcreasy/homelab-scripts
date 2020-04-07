@@ -5,5 +5,5 @@ if [[ $EUID -ne 0 ]]; then
     exit 100
 fi
 
-sed -i '/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf
 systemctl restart systemd-logind.service
